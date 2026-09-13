@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio and resume of Hemant Meena, B.Tech CSE student at IIIT Sonepat.">
+  <title>Hemant Meena | Portfolio</title>
+  <style>
+    :root {
+      --navy: #0f1f3d;
+      --blue: #2563eb;
+      --sky: #38bdf8;
+      --pale: #eff6ff;
+      --paper: #ffffff;
+      --background: #f4f7fb;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #dce5f1;
+      --shadow: 0 16px 42px rgba(15, 31, 61, .09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--background);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(220, 229, 241, .8);
+      background: rgba(255, 255, 255, .91);
+      backdrop-filter: blur(14px);
+    }
+    .nav-content {
+      width: min(1140px, calc(100% - 40px));
+      min-height: 66px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .monogram { color: var(--blue); font-size: 1.22rem; font-weight: 900; letter-spacing: -.06em; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 20px; color: #526176; font-size: .88rem; font-weight: 700; }
+    .nav-links a:hover { color: var(--blue); }
+
+    .hero { overflow: hidden; background: linear-gradient(120deg, #0b1932 0%, #123b86 55%, #2563eb 100%); color: #fff; }
+    .hero-content {
+      position: relative;
+      width: min(1140px, calc(100% - 40px));
+      min-height: 400px;
+      margin: auto;
+      padding: 66px 0;
+      display: flex;
+      align-items: center;
+      gap: 42px;
+    }
+    .hero-content::before, .hero-content::after { content: ""; position: absolute; border-radius: 50%; pointer-events: none; }
+    .hero-content::before { width: 480px; height: 480px; right: -215px; top: -225px; border: 68px solid rgba(125, 211, 252, .12); }
+    .hero-content::after { width: 230px; height: 230px; right: 7%; bottom: -170px; background: rgba(255, 255, 255, .055); }
+    .profile-frame {
+      z-index: 1;
+      width: 176px;
+      height: 176px;
+      flex: 0 0 176px;
+      padding: 5px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e0f2fe, #60a5fa);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, .22);
+    }
+    .profile-frame img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; }
+    .hero-copy { z-index: 1; max-width: 700px; }
+    .eyebrow { margin: 0 0 10px; color: #bae6fd; font-size: .77rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(2.65rem, 6vw, 4.8rem); line-height: .98; letter-spacing: -.065em; }
+    .headline { margin: 18px 0 0; color: #dbeafe; font-size: clamp(1rem, 2vw, 1.2rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 43px;
+      padding: 0 17px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      font: inherit;
+      font-size: .9rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #1540a1; background: #fff; box-shadow: 0 8px 18px rgba(0, 0, 0, .12); }
+    .button-secondary { color: #fff; background: rgba(255, 255, 255, .05); border-color: rgba(255, 255, 255, .58); }
+
+    main { width: min(1140px, calc(100% - 40px)); margin: 0 auto; padding: 40px 0 66px; }
+    .page-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(290px, .84fr); gap: 25px; align-items: start; }
+    .content-column, .sidebar { display: grid; gap: 25px; }
+    .card { padding: 28px; border: 1px solid var(--line); border-radius: 17px; background: var(--paper); box-shadow: var(--shadow); }
+    .section-heading { display: flex; align-items: center; gap: 10px; margin: 0 0 17px; font-size: 1.16rem; line-height: 1.2; letter-spacing: -.025em; }
+    .section-heading::before { content: ""; width: 4px; height: 23px; border-radius: 99px; background: var(--blue); }
+    p { margin: 0; color: #4b5a70; }
+
+    .info-list { display: grid; gap: 11px; margin: 0; }
+    .info-list div { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid #eef2f7; }
+    .info-list div:last-child { border-bottom: 0; padding-bottom: 0; }
+    dt { color: var(--muted); font-size: .85rem; }
+    dd { margin: 0; color: #344054; font-size: .92rem; font-weight: 750; overflow-wrap: anywhere; }
+
+    .contact-list { display: grid; gap: 10px; }
+    .contact-link { display: block; padding: 11px 12px; border: 1px solid #e8eef7; border-radius: 10px; background: #f9fbff; overflow-wrap: anywhere; }
+    .contact-link:hover { border-color: #93c5fd; background: var(--pale); color: #1d4ed8; }
+    .contact-label { display: block; margin-bottom: 2px; color: var(--muted); font-size: .7rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .contact-value { color: #344054; font-size: .87rem; font-weight: 700; }
+
+    .timeline { display: grid; gap: 24px; }
+    .timeline-item { position: relative; padding-left: 20px; border-left: 2px solid #cfe0ff; }
+    .timeline-item::before { content: ""; position: absolute; left: -5.5px; top: 5px; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+    .timeline-item h3, .project h3 { margin: 0; color: #24334a; font-size: 1rem; line-height: 1.35; }
+    .timeline-meta { margin: 4px 0 7px; color: #2563eb; font-size: .86rem; font-weight: 800; }
+    .timeline-item p:not(.timeline-meta) { font-size: .92rem; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; }
+    .chip { padding: 6px 10px; border-radius: 999px; background: var(--pale); color: #1e40af; font-size: .84rem; font-weight: 800; }
+    .project-list { display: grid; gap: 12px; }
+    .project { padding: 17px; border: 1px solid #e4ebf5; border-radius: 11px; background: #f9fbff; }
+    .project p { margin-top: 6px; font-size: .91rem; }
+    .project-tag { display: inline-block; margin-top: 10px; color: #1d4ed8; font-size: .77rem; font-weight: 850; }
+    .note { padding: 12px; border-left: 3px solid var(--sky); border-radius: 0 8px 8px 0; background: #f0f9ff; color: #36546f; font-size: .86rem; }
+
+    footer { padding: 25px 20px; border-top: 1px solid var(--line); background: #fff; color: var(--muted); font-size: .87rem; text-align: center; }
+    footer strong { color: #334155; }
+
+    @media (max-width: 790px) {
+      .nav-content { padding: 12px 0; align-items: flex-start; flex-direction: column; gap: 8px; }
+      .nav-links { gap: 13px; font-size: .79rem; }
+      .hero-content { min-height: 0; padding: 52px 0; flex-direction: column; gap: 25px; text-align: center; }
+      .hero-actions { justify-content: center; }
+      .profile-frame { width: 148px; height: 148px; flex-basis: 148px; }
+      .page-grid { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+      .card { padding: 23px; }
+    }
+
+    @media print {
+      @page { margin: 10mm; }
+      .site-nav, .hero-actions { display: none; }
+      body { background: #fff; font-size: 10pt; }
+      .hero { color: var(--ink); background: #fff; }
+      .hero-content { width: 100%; min-height: auto; padding: 0 0 12px; gap: 18px; }
+      .hero-content::before, .hero-content::after { display: none; }
+      .profile-frame { width: 98px; height: 98px; flex-basis: 98px; box-shadow: none; }
+      .eyebrow { color: #2563eb; } .headline { color: #475569; }
+      main { width: 100%; padding: 12px 0; }
+      .page-grid { grid-template-columns: 1.35fr .85fr; gap: 12px; }
+      .content-column, .sidebar { gap: 12px; }
+      .card { padding: 15px; border-radius: 8px; box-shadow: none; break-inside: avoid; }
+      .section-heading { margin-bottom: 10px; }
+      .timeline { gap: 13px; }
+      footer { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-content">
+      <a class="monogram" href="#home" aria-label="Hemant Meena home">HM.</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <div class="profile-frame"><img src="hemant-meena-profile.jpeg" alt="Hemant Meena"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Personal Portfolio</p>
+        <h1>Hemant Meena</h1>
+        <p class="headline">First-Year B.Tech Computer Science &amp; Engineering Student<br>Indian Institute of Information Technology, Sonepat</p>
+        <div class="hero-actions">
+          <button class="button button-primary" type="button" onclick="window.print()">Download Resume</button>
+          <a class="button button-secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-grid">
+      <div class="content-column">
+        <section class="card" id="about">
+          <h2 class="section-heading">About Me</h2>
+          <p>I am a first-year Computer Science and Engineering student at the Indian Institute of Information Technology, Sonepat. I am building my foundation in C programming and web development, with a focus on turning ideas into simple, useful projects. I enjoy learning consistently, strengthening my problem-solving skills, and exploring software development.</p>
+        </section>
+
+        <section class="card" id="education">
+          <h2 class="section-heading">Education</h2>
+          <div class="timeline">
+            <article class="timeline-item">
+              <h3>B.Tech in Computer Science &amp; Engineering</h3>
+              <p class="timeline-meta">Indian Institute of Information Technology, Sonepat · 2026 – 2030</p>
+              <p>First-year undergraduate student developing foundations in programming, computer science, mathematics, and problem solving.</p>
+            </article>
+            <article class="timeline-item">
+              <h3>Senior Secondary Education</h3>
+              <p class="timeline-meta">Modern Vidhya Ashram Senior Secondary School, Sikar Road, Rajawas (Amer), Jaipur · RBSE · 2025</p>
+              <p>Completed senior secondary education under the Rajasthan Board of Secondary Education.</p>
+            </article>
+            <article class="timeline-item">
+              <h3>Secondary Education</h3>
+              <p class="timeline-meta">Modern Vidhya Ashram Senior Secondary School, Sikar Road, Rajawas (Amer), Jaipur · RBSE · 2023</p>
+              <p>Completed secondary education under the Rajasthan Board of Secondary Education.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="card" id="projects">
+          <h2 class="section-heading">Learning Projects</h2>
+          <div class="project-list">
+            <article class="project">
+              <h3>Personal Resume Website</h3>
+              <p>A responsive portfolio website to present my education, skills, projects, and contact details. Built with clean HTML, CSS, and a print-friendly resume option.</p>
+              <span class="project-tag">HTML · CSS · JavaScript</span>
+            </article>
+            <article class="project">
+              <h3>C Programming Practice Programs</h3>
+              <p>A collection of beginner C programs focused on building logic through number operations, conditional statements, loops, and pattern-based exercises.</p>
+              <span class="project-tag">C Programming</span>
+            </article>
+            <article class="project">
+              <h3>Simple HTML Landing Page</h3>
+              <p>A beginner-friendly static web page designed to practice layout, typography, links, and responsive styling with HTML and CSS.</p>
+              <span class="project-tag">HTML · CSS</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-heading">Experience &amp; Achievements</h2>
+          <p class="note">Currently focused on academic learning, programming practice, and building a project portfolio. This section can be updated as you complete internships, certificates, hackathons, or other achievements.</p>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <section class="card">
+          <h2 class="section-heading">Personal Details</h2>
+          <dl class="info-list">
+            <div><dt>Age</dt><dd>18 years</dd></div>
+            <div><dt>Date of birth</dt><dd>05 October 2007</dd></div>
+            <div><dt>Gender</dt><dd>Male</dd></div>
+            <div><dt>Nationality</dt><dd>Indian</dd></div>
+            <div><dt>Location</dt><dd>Jaipur, Rajasthan, India</dd></div>
+          </dl>
+        </section>
+
+        <section class="card" id="contact">
+          <h2 class="section-heading">Contact</h2>
+          <div class="contact-list">
+            <a class="contact-link" href="tel:+918290761359"><span class="contact-label">Phone</span><span class="contact-value">+91 82907 61359</span></a>
+            <a class="contact-link" href="mailto:hemant.meena0510@gmail.com"><span class="contact-label">Email</span><span class="contact-value">hemant.meena0510@gmail.com</span></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/hemantmeena0510?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noreferrer"><span class="contact-label">LinkedIn</span><span class="contact-value">linkedin.com/in/hemantmeena0510</span></a>
+            <a class="contact-link" href="https://github.com/hemantmeena0510" target="_blank" rel="noreferrer"><span class="contact-label">GitHub</span><span class="contact-value">github.com/hemantmeena0510</span></a>
+          </div>
+        </section>
+
+        <section class="card" id="skills">
+          <h2 class="section-heading">Skills</h2>
+          <div class="chips"><span class="chip">C Programming</span><span class="chip">HTML</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">HackerRank</span><span class="chip">LeetCode</span></div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-heading">Strengths</h2>
+          <div class="chips"><span class="chip">Learning Mindset</span><span class="chip">Problem Solving</span><span class="chip">Consistency</span><span class="chip">Attention to Detail</span></div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-heading">Languages</h2>
+          <div class="chips"><span class="chip">Hindi</span><span class="chip">English</span></div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-heading">Interests</h2>
+          <div class="chips"><span class="chip">Web Development</span><span class="chip">Programming Practice</span><span class="chip">Technology</span><span class="chip">Problem Solving</span></div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer>© <span id="year"></span> <strong>Hemant Meena</strong>. Built with HTML, CSS, and JavaScript.</footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
